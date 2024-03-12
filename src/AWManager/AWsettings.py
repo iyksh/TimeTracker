@@ -1,5 +1,6 @@
 import subprocess
 import os
+import subprocess
 
 def process_exists(process_name):
     progs = str(subprocess.check_output('tasklist'))
@@ -39,15 +40,15 @@ def find_aw_processes():
     return logs_dir, aw_dir
     
 def start_aw_processes(aw_dir):
-    subprocess.Popen(f'{aw_dir}\\aw-qt.exe')
+    subprocess.Popen(['powershell', f'Start-process -FilePath "{aw_dir}\\aw-qt.exe" -WindowStyle Minimized -PassThru'])
     return True
-
 
 def check_aw_processes():
     is_alive = is_aw_processes_alive()
     
     if not is_alive:
+        print('[AWsettings] [Info]: ActivityWatch processes are not running, starting them now...')
         logs_dir, aw_dir = find_aw_processes()
         start_aw_processes(aw_dir)
         return False
-    
+
