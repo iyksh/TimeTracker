@@ -13,7 +13,7 @@ try:
     from .PlotTracker import *
     from .tabs.login import login_window
     from .tabs.save import save_window
-    from .tabs.home import home_window
+    from ...dashboard.home import home_window
     
     from tkinter import filedialog
 
