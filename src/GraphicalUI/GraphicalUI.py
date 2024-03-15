@@ -131,16 +131,7 @@ class AppUI(customtkinter.CTk):
         
         home_window(frame)
         
-        #self.entry_task = customtkinter.CTkEntry(self, placeholder_text="Add Task")
-        #self.entry_task.grid(row=3, column=1, columnspan=2, padx=(20, 0), pady=(20, 20), sticky="nsew")
-
-        #self.add_button_ = customtkinter.CTkButton(master=self, fg_color="transparent", border_width=2, text_color=("gray10", "#DCE4EE"), text="Add")
-        #self.add_button_.grid(row=3, column=3, padx=(20, 20), pady=(20, 20), sticky="nsew")
-        pass
     
-
-
-        
         
     def analytics(self):
         # Clear the existing content

@@ -1,0 +1,157 @@
+{
+ "version": "auto-py-to-exe-configuration_v1",
+ "pyinstallerOptions": [
+  {
+   "optionDest": "noconfirm",
+   "value": true
+  },
+  {
+   "optionDest": "filenames",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/__main_.py"
+  },
+  {
+   "optionDest": "onefile",
+   "value": false
+  },
+  {
+   "optionDest": "console",
+   "value": false
+  },
+  {
+   "optionDest": "icon_file",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/application_icon.ico"
+  },
+  {
+   "optionDest": "clean_build",
+   "value": false
+  },
+  {
+   "optionDest": "strip",
+   "value": false
+  },
+  {
+   "optionDest": "noupx",
+   "value": false
+  },
+  {
+   "optionDest": "disable_windowed_traceback",
+   "value": false
+  },
+  {
+   "optionDest": "uac_admin",
+   "value": false
+  },
+  {
+   "optionDest": "uac_uiaccess",
+   "value": false
+  },
+  {
+   "optionDest": "argv_emulation",
+   "value": false
+  },
+  {
+   "optionDest": "bootloader_ignore_signals",
+   "value": false
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/AWManager/AWsettings.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/config_en.yaml;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/GraphicalUI.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/language.txt;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/PlotTracker.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/tabs/home.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/tabs/login.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/tabs/save.py;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/add_user_dark.png;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/add_user_light.png;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/analytics_light.png;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/application_icon.ico;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/bg_gradient.jpg;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/chat_dark.png;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/chat_light.png;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/CustomTkinter_logo_single.png;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/home_dark.png;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/home_light.png;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/image_icon_light.png;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/large_test_image.png;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/login_light.png;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/logo.png;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/save_light.png;."
+  },
+  {
+   "optionDest": "datas",
+   "value": "C:/Users/gssan/OneDrive/\u00c1rea de Trabalho/TimeTracker/src/GraphicalUI/images/settings_light.png;."
+  }
+ ],
+ "nonPyinstallerOptions": {
+  "increaseRecursionLimit": true,
+  "manualArguments": ""
+ }
+}

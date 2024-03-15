@@ -1,7 +1,8 @@
 import tkinter
 import customtkinter
 import webview
-import multiprocessing
+
+from src.AWManager.AWsettings import is_aw_processes_alive
 
 
 valid_logins = { "root": "root", "ahbfinance": "admin"}
@@ -46,12 +47,7 @@ def login_window(frame: tkinter.Frame):
 
 def open_webrowser(tkinter_frame: tkinter.Frame):
     try:
-
-        # Create a new process to open the web browser
-        p = multiprocessing.Process(target=open_browser)
-        p.start()
-
-        return True
+        open_browser()
 
     except Exception as e:
         print(f'[login.py] [Error]: {e}')
@@ -59,7 +55,7 @@ def open_webrowser(tkinter_frame: tkinter.Frame):
 
 
 def open_browser():
-    webview.create_window('Admin Center', 'http://localhost:5600/#/buckets')
+    webview.create_window("Admin Center", "http://localhost:5600/#/buckets")
     webview.start()
 
 
@@ -70,6 +66,11 @@ def admin_settings(frame):
     def change_scaling_event(new_scaling: str):
         new_scaling_float = int(new_scaling.replace("%", "")) / 100
         customtkinter.set_widget_scaling(new_scaling_float)
+
+
+    is_alive = is_aw_processes_alive()
+    for i in range(len(is_alive)):
+        is_alive[i] = "true" if is_alive[i] else "false"
 
     # create tabview
     tabview = customtkinter.CTkTabview(frame, width=2500, height=100)
@@ -82,15 +83,15 @@ def admin_settings(frame):
     text_aw_server.grid(row=0, column=0, padx=20, pady=(20, 10), sticky="w")
 
     aw_server_optionmenu = customtkinter.CTkOptionMenu(tabview.tab("Admin-Configs"), dynamic_resizing=False,
-                                                      values=["true", "false"])
+                                                      values=[is_alive[0]])
     aw_server_optionmenu.grid(row=0, column=1, padx=20, pady=(20, 10), sticky="w")
 
     # aw-server-rust Option Menu
-    text_aw_server_rust = customtkinter.CTkLabel(tabview.tab("Admin-Configs"), text="aw-server-rust:", anchor="w")
+    text_aw_server_rust = customtkinter.CTkLabel(tabview.tab("Admin-Configs"), text="aw-qt:", anchor="w")
     text_aw_server_rust.grid(row=1, column=0, padx=20, pady=(20, 10), sticky="w")
 
     aw_server_rust_optionmenu = customtkinter.CTkOptionMenu(tabview.tab("Admin-Configs"), dynamic_resizing=False,
-                                                            values=["true", "false"])
+                                                            values=[is_alive[3]])
     aw_server_rust_optionmenu.grid(row=1, column=1, padx=20, pady=(20, 10), sticky="w")
 
     # aw-watcher-afk Option Menu
@@ -98,7 +99,7 @@ def admin_settings(frame):
     text_aw_watcher_afk.grid(row=2, column=0, padx=20, pady=(20, 10), sticky="w")
 
     aw_watcher_afk_optionmenu = customtkinter.CTkOptionMenu(tabview.tab("Admin-Configs"), dynamic_resizing=False,
-                                                           values=["true", "false"])
+                                                           values=[is_alive[1]])
     aw_watcher_afk_optionmenu.grid(row=2, column=1, padx=20, pady=(20, 10), sticky="w")
 
     # aw-watcher-window Option Menu
@@ -106,14 +107,13 @@ def admin_settings(frame):
     text_aw_watcher_window.grid(row=3, column=0, padx=20, pady=(20, 10), sticky="w")
 
     aw_watcher_window_optionmenu = customtkinter.CTkOptionMenu(tabview.tab("Admin-Configs"), dynamic_resizing=False,
-                                                               values=["true", "false"])
+                                                               values=[is_alive[2]])
     aw_watcher_window_optionmenu.grid(row=3, column=1, padx=20, pady=(20, 10), sticky="w")
+    
+    y_space_label = customtkinter.CTkLabel(tabview.tab("Admin-Configs"), text="", anchor="w")
+    y_space_label.grid(row=26, column=4, padx=20, pady=(100, 100), sticky="w")
 
-    # Save Settings Button
-    save_settings_button = customtkinter.CTkButton(tabview.tab("Admin-Configs"), text="Save Settings")
-    save_settings_button.grid(row=20, column=0, columnspan=2, padx=20, pady=(20, 10))
-
-    open_admin_center_button = customtkinter.CTkButton(tabview.tab("Admin-Configs"), text="Open Admin Center", command=lambda: open_webrowser(frame))
+    open_admin_center_button = customtkinter.CTkButton(tabview.tab("Admin-Configs"), text="Admin Center", command=lambda: open_webrowser(frame))
     open_admin_center_button.grid(row=25, column=0, columnspan=2, padx=20, pady=(20, 10))
 
     # center the tabview
@@ -122,6 +122,11 @@ def admin_settings(frame):
 
     tabview.add("Configurations")
     tabview.tab("Configurations").grid_columnconfigure(0, weight=1)  # configure grid of individual tabs
+
+
+    #================================================================================================
+    # Configurations Tab
+    #================================================================================================
 
     # Language Option Menu
     text_language = customtkinter.CTkLabel(tabview.tab("Configurations"), text="Language:", anchor="w")
@@ -150,12 +155,8 @@ def admin_settings(frame):
     scaling_optionmenu.grid(row=2, column=1, padx=20, pady=(20, 10), sticky="w")
 
     # Font Option Menu
-    text_font = customtkinter.CTkLabel(tabview.tab("Configurations"), text="Font:", anchor="w")
+    text_font = customtkinter.CTkLabel(tabview.tab("Configurations"), text="", anchor="w")
     text_font.grid(row=3, column=0, padx=20, pady=(20, 10), sticky="w")
-
-    font_optionmenu = customtkinter.CTkOptionMenu(tabview.tab("Configurations"), dynamic_resizing=False,
-                                                  values=["Arial", "Times New Roman", "Courier New"])
-    font_optionmenu.grid(row=3, column=1, padx=20, pady=(20, 10), sticky="w")
 
     # Theme Option Menu
     text_theme = customtkinter.CTkLabel(tabview.tab("Configurations"), text="", anchor="w")
@@ -181,6 +182,8 @@ def admin_settings(frame):
     
 
 
+        
+
     # Function to apply settings
 def apply_settings(language: str, appearance_mode: str, scaling: str, font: str):
 
@@ -188,3 +191,5 @@ def apply_settings(language: str, appearance_mode: str, scaling: str, font: str)
         print(f"Appearance Mode: {appearance_mode}")
         print(f"Scaling: {scaling}")
         print(f"Font: {font}")
+        
+        
