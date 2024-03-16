@@ -3,7 +3,9 @@ from CTkTable import CTkTable
 from PIL import Image
 
 from .user import User
-from .dashboard.main import home
+from .main_views.dashboard import home
+from .main_views.create_task import create_task_window
+from .main_views.tasks_running import tasks_running_window
 
 import os
 
@@ -12,7 +14,7 @@ class TimeTrackingGUI():
     def __init__(self, images_relative_path: str, email: str) -> None:
         
         
-        logged_user = User("", email)
+        self.logged_user = User("", email)
         
         self.images_relative_path = images_relative_path
         app = CTk()
@@ -37,10 +39,10 @@ class TimeTrackingGUI():
 
 
         self.create_button(sidebar_frame, "analytics_icon.png", "Dashboard", self.dashboard_event)
-        self.create_button(sidebar_frame, "package_icon.png", "Orders", self.orders_event)
-        self.create_button(sidebar_frame, "list_icon.png", "Orders", self.returns_event)
+        self.create_button(sidebar_frame, "package_icon.png", "Create Task", self.create_task_event)
+        self.create_button(sidebar_frame, "list_icon.png", "Tasks Running", self.tasks_running_event)
         
-        if logged_user.admin:
+        if self.logged_user.admin:
             self.create_button(sidebar_frame, "returns_icon.png", "Admin Center", self.returns_event)
         
         self.create_button(sidebar_frame, "settings_icon.png", "Settings", self.settings_event)
@@ -53,9 +55,10 @@ class TimeTrackingGUI():
 
 
     def create_main_view(self, master):
-        if hasattr(self, 'main_view') and self.main_view.winfo_exists():
+        if hasattr(self, 'main_view'):
             self.main_view.destroy()
-        main_view = CTkFrame(master=master, fg_color="#fff",  width=1200, height=650, corner_radius=0)
+            
+        main_view = CTkFrame(master=master, fg_color="#fff",  width=1300, height=650, corner_radius=0)
         main_view.pack_propagate(0)
         main_view.pack(side="left")
         
@@ -67,13 +70,19 @@ class TimeTrackingGUI():
         CTkButton(master=master, image=button_img, text=text, fg_color="transparent", font=("Arial Bold", 14), hover_color="#8321b4", anchor="w", command=command).pack(anchor="w", ipady=5, pady=(15, 0))
 
     def dashboard_event(self):
-        frame = self.create_main_view(self.app)
-        home(frame)
+        self.main_view = self.create_main_view(self.app)
+        home(self.main_view)
         
         pass
     
-    def orders_event(self):
+    def create_task_event(self):
+        self.main_view = self.create_main_view(self.app)
+        create_task_window(self.main_view, self.logged_user.get_email())
         pass
+    
+    def tasks_running_event(self):
+        self.main_view = self.create_main_view(self.app)
+        tasks_running_window(self.main_view)
 
     def returns_event(self):
         pass

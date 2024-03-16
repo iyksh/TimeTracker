@@ -12,7 +12,7 @@ def times(clock):
         hours, remainder = divmod(uptime, 3600)
         minutes, seconds = divmod(remainder, 60)
         
-        current_time = f"\nSystem is up: {hours:02d}:{minutes:02d}:{seconds:02d} Hours"
+        current_time = f"\nThe operating system is active for: {hours:02d}:{minutes:02d}:{seconds:02d} Hours"
         clock.configure(text=current_time)
 
     except Exception as e:

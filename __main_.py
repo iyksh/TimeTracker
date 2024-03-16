@@ -75,7 +75,7 @@ class Login_Page():
         app = TimeTrackingGUI(self.images_relative_path, credentials_valid[1])
         
     def check_login_credentials(self):
-        valid_credentials = {"user": "user", "root": "root", "ahbfinance": "admin"}
+        valid_credentials = {"user": "user", "root": "root", "info@ahbfinance.com": "admin"}
         
         email = self.email.get()
         password = self.password.get()
@@ -87,6 +87,5 @@ class Login_Page():
 
 if __name__ == "__main__":
     Login_Page()
-    #app = TimeTrackingGUI('images/', "root")
 
 
