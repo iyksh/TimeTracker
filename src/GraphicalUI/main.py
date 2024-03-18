@@ -6,6 +6,9 @@ from .user import User
 from .main_views.dashboard import home
 from .main_views.create_task import create_task_window
 from .main_views.tasks_running import tasks_running_window
+from .main_views.admin_center import admin_center_window
+from .main_views.configurations import configurations_window
+from .main_views.save_activity import save_activity_window
 
 import os
 
@@ -41,11 +44,12 @@ class TimeTrackingGUI():
         self.create_button(sidebar_frame, "analytics_icon.png", "Dashboard", self.dashboard_event)
         self.create_button(sidebar_frame, "package_icon.png", "Create Task", self.create_task_event)
         self.create_button(sidebar_frame, "list_icon.png", "Tasks Running", self.tasks_running_event)
+        self.create_button(sidebar_frame, "login_light.png", "Save Activity", self.save_activity_event)
         
         if self.logged_user.admin:
-            self.create_button(sidebar_frame, "returns_icon.png", "Admin Center", self.returns_event)
+            self.create_button(sidebar_frame, "returns_icon.png", "Admin Center", self.admin_center_event)
         
-        self.create_button(sidebar_frame, "settings_icon.png", "Settings", self.settings_event)
+        self.create_button(sidebar_frame, "settings_icon.png", "Settings", self.configurations_event)
         self.create_button(sidebar_frame, "person_icon.png", "Account", self.account_event)
         
         self.main_view = self.create_main_view(app)
@@ -80,6 +84,22 @@ class TimeTrackingGUI():
         create_task_window(self.main_view, self.logged_user.get_email())
         pass
     
+    def save_activity_event(self):
+        self.main_view = self.create_main_view(self.app)
+        save_activity_window(self.main_view)
+        pass
+    
+    
+    def admin_center_event(self):
+        self.main_view = self.create_main_view(self.app)
+        admin_center_window(self.main_view)
+        pass
+    
+    def configurations_event(self):
+        self.main_view = self.create_main_view(self.app)
+        configurations_window(self.main_view, self.logged_user.get_email())
+        pass
+    
     def tasks_running_event(self):
         self.main_view = self.create_main_view(self.app)
         tasks_running_window(self.main_view)
@@ -91,6 +111,8 @@ class TimeTrackingGUI():
         pass
     
     def account_event(self):
+        print(f"Logged account: {self.logged_user.get_email()}")
+        
         pass
 
 if __name__ == "__main__":

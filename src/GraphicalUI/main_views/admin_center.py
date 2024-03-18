@@ -1,51 +1,10 @@
 import tkinter
-import customtkinter
+from customtkinter import *
 import webview
 
 from src.AWManager.AWsettings import is_aw_processes_alive
 
-
-valid_logins = { "root": "root", "ahbfinance": "admin"}
-
-
-
-def login_window(frame: tkinter.Frame):
-    
-    def login_event():
-        if entry_1.get() in valid_logins and entry_2.get() == valid_logins[entry_1.get()]:
-            entry_1.configure(text_color="white")
-            entry_2.configure(text_color="white")
-            
-            admin_settings(frame)
-        
-        else:            
-            label_3 = customtkinter.CTkLabel(master=frame, width=400, height=60, corner_radius=10,
-            fg_color=("transparent"), text="Wrong Password/Username!", bg_color="transparent", font=("Arial bold", 15),
-            text_color="red"
-            
-            )
-            label_3.place(relx=0.5, rely=0.8, anchor=tkinter.CENTER)
-
-    # Add some widgets for login page
-    label_1 = customtkinter.CTkLabel(master=frame, width=400, height=60, corner_radius=10,
-                                     fg_color=("transparent"), text="Welcome!", bg_color="transparent", font=("Arial bold", 30))
-    label_1.place(relx=0.5, rely=0.3, anchor=tkinter.CENTER)
-    
-    label_2 = customtkinter.CTkLabel(master=frame, width=400, height=60, corner_radius=10,
-                                        fg_color=("transparent"), text="Please Login to Continue to the Admin Center", bg_color="transparent", font=("Arial bold", 15))
-    label_2.place(relx=0.5, rely=0.4, anchor=tkinter.CENTER)
-
-    entry_1 = customtkinter.CTkEntry(master=frame, corner_radius=20, width=400, placeholder_text="Username")
-    entry_1.place(relx=0.5, rely=0.52, anchor=tkinter.CENTER)
-
-    entry_2 = customtkinter.CTkEntry(master=frame, corner_radius=20, width=400, show="*", placeholder_text="Password")
-    entry_2.place(relx=0.5, rely=0.6, anchor=tkinter.CENTER)
-
-    button_login = customtkinter.CTkButton(master=frame, text="LOGIN", corner_radius=6, command=login_event, width=400)
-    button_login.place(relx=0.5, rely=0.7, anchor=tkinter.CENTER)
-
-
-def open_webrowser(tkinter_frame: tkinter.Frame):
+def open_webrowser():
     try:
         open_browser()
 
@@ -58,8 +17,8 @@ def open_browser():
     webview.create_window("Admin Center", "http://localhost:5600/#/buckets")
     webview.start()
 
-
-def admin_settings(frame):
+"""
+def admin_center_window(frame):
     def change_appearance_mode_event(new_appearance_mode: str):
         customtkinter.set_appearance_mode(new_appearance_mode)
 
@@ -122,54 +81,6 @@ def admin_settings(frame):
 
     tabview.add("Configurations")
     tabview.tab("Configurations").grid_columnconfigure(0, weight=1)  # configure grid of individual tabs
-
-
-    #================================================================================================
-    # Configurations Tab
-    #================================================================================================
-
-    # Language Option Menu
-    text_language = customtkinter.CTkLabel(tabview.tab("Configurations"), text="Language:", anchor="w")
-    text_language.grid(row=0, column=0, padx=20, pady=(20, 10), sticky="w")
-
-    language_optionmenu = customtkinter.CTkOptionMenu(tabview.tab("Configurations"), dynamic_resizing=False,
-                                                      values=["English", "Polish", "German"])
-    language_optionmenu.grid(row=0, column=1, padx=20, pady=(20, 10), sticky="w")
-
-    # Appearance Mode Option Menu
-    text_appearance_mode = customtkinter.CTkLabel(tabview.tab("Configurations"), text="Appearance Mode:", anchor="w")
-    text_appearance_mode.grid(row=1, column=0, padx=20, pady=(20, 10), sticky="w")
-
-    appearance_mode_optionmenu = customtkinter.CTkOptionMenu(tabview.tab("Configurations"), dynamic_resizing=False,
-                                                             values=["System", "Dark", "Light"],
-                                                             command=change_appearance_mode_event)
-    appearance_mode_optionmenu.grid(row=1, column=1, padx=20, pady=(20, 10), sticky="w")
-
-    # Scaling Option Menu
-    text_scaling = customtkinter.CTkLabel(tabview.tab("Configurations"), text="UI Scaling:", anchor="w")
-    text_scaling.grid(row=2, column=0, padx=20, pady=(20, 10), sticky="w")
-
-    scaling_optionmenu = customtkinter.CTkOptionMenu(tabview.tab("Configurations"), dynamic_resizing=False,
-                                                     values=["100%", "80%", "90%", "110%", "120%"],
-                                                     command=change_scaling_event)
-    scaling_optionmenu.grid(row=2, column=1, padx=20, pady=(20, 10), sticky="w")
-
-    # Font Option Menu
-    text_font = customtkinter.CTkLabel(tabview.tab("Configurations"), text="", anchor="w")
-    text_font.grid(row=3, column=0, padx=20, pady=(20, 10), sticky="w")
-
-    # Theme Option Menu
-    text_theme = customtkinter.CTkLabel(tabview.tab("Configurations"), text="", anchor="w")
-    text_theme.grid(row=4, column=0, padx=20, pady=(20, 10), sticky="w")
-
-
-    text_theme = customtkinter.CTkLabel(tabview.tab("Configurations"), text="", anchor="w")
-    text_theme.grid(row=5, column=0, padx=20, pady=(20, 10), sticky="w")
-
-
-
-
-
     
     selected_language = customtkinter.StringVar().get
     selected_appearance_mode = customtkinter.StringVar().get
@@ -179,8 +90,47 @@ def admin_settings(frame):
     apply_settings_button = customtkinter.CTkButton(tabview.tab("Configurations"), text="Apply Settings", 
     command=lambda: apply_settings(selected_language, selected_appearance_mode, selected_scaling, selected_font))
     apply_settings_button.grid(row=7, columnspan=2, pady=(20, 10))
-    
+    """
 
+def admin_center_window(frame:CTkFrame):
+    
+    is_alive = is_aw_processes_alive()
+    for i in range(len(is_alive)):
+        is_alive[i] = ["Enabled"] if is_alive[i] else ["Disabled"]
+    
+    set_appearance_mode("light")
+
+    aw_server = is_alive[0]
+    aw_watcher_afk = is_alive[1]
+    aw_watcher_window = is_alive[2]
+    aw_qt = is_alive[3]
+    
+    main_view = frame
+
+    title_frame = CTkFrame(master=main_view, fg_color="transparent")
+    title_frame.pack(anchor="n", fill="x",  padx=27, pady=(29, 0))
+    
+    CTkButton(master=title_frame, text="+ Admin Center TimeTracking",  font=("Arial Black", 15), text_color="#fff", fg_color="#601E88", hover_color="#E44982", command=open_webrowser).pack(anchor="ne", side="right")
+    
+    CTkLabel(master=main_view, text="ActivityWatch-server | Default: True", font=("Arial Bold", 17), text_color="#601E88").pack(anchor="nw", pady=(25,0), padx=27)
+    aw_server_combobox = CTkComboBox(master=main_view, width=1000, height=40, values=aw_server, button_color="#601E88", border_color="#601E88", border_width=2, button_hover_color="#E44982", dropdown_hover_color="#E44982", dropdown_fg_color="#601E88", dropdown_text_color="#fff")
+    aw_server_combobox.pack(pady=(10,0), padx=27)
+
+    CTkLabel(master=main_view, text="ActivityWatch-watcher-afk | Default: True", font=("Arial Bold", 17), text_color="#601E88").pack(anchor="nw", pady=(25,0), padx=27)
+    aw_watcher_afk_combobox = CTkComboBox(master=main_view, width=1000, height=40, values=aw_watcher_afk, button_color="#601E88", border_color="#601E88", border_width=2, button_hover_color="#E44982", dropdown_hover_color="#E44982", dropdown_fg_color="#601E88", dropdown_text_color="#fff")
+    aw_watcher_afk_combobox.pack(pady=(10,0), padx=27)
+
+    CTkLabel(master=main_view, text="ActivityWatch-watcher-window | Default: True", font=("Arial Bold", 17), text_color="#601E88").pack(anchor="nw", pady=(25,0), padx=27)
+    aw_watcher_window_combobox = CTkComboBox(master=main_view, width=1000, height=40, values=aw_watcher_window, button_color="#601E88", border_color="#601E88", border_width=2, button_hover_color="#E44982", dropdown_hover_color="#E44982", dropdown_fg_color="#601E88", dropdown_text_color="#fff")
+    aw_watcher_window_combobox.pack(pady=(10,0), padx=27)
+
+    CTkLabel(master=main_view, text="ActivityWatch-qt | Default: False", font=("Arial Bold", 17), text_color="#601E88").pack(anchor="nw", pady=(25,0), padx=27)
+    aw_qt_combobox = CTkComboBox(master=main_view, width=1000, height=40, values=aw_qt, button_color="#601E88", border_color="#601E88", border_width=2, button_hover_color="#E44982", dropdown_hover_color="#E44982", dropdown_fg_color="#601E88", dropdown_text_color="#fff")
+    aw_qt_combobox.pack(pady=(10,0), padx=27)
+
+   
+    actions= CTkFrame(master=main_view, fg_color="transparent")
+    actions.pack(fill="both")
 
         
 

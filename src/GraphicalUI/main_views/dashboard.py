@@ -68,6 +68,27 @@ def home(app):
         ["2021-09-04", "Development", "Bob Thompson", "bob@example.com", "13:00:00", "15:00:00", "In Progress", "High", "Debugging required"],
         ["2021-09-05", "Meeting", "Sarah Lee", "sarah@example.com", "11:30:00", "12:30:00", "Scheduled", "Medium", "Agenda to be prepared"],
         ["2021-09-06", "Training", "Michael Brown", "michael@email.com", "10:00:00", "12:00:00", "Confirmed", "High", "Materials distributed"],
+        ['2021-09-03', 'Customer Support', 'Alice Johnson', "alice@email.com", '09:00:00', '10:00:00', 'Completed', 'Low', 'Follow-up needed'],
+        ["2021-09-04", "Development", "Bob Thompson", "bob@example.com", "13:00:00", "15:00:00", "In Progress", "High", "Debugging required"],
+        ["2021-09-05", "Meeting", "Sarah Lee", "sarah@example.com", "11:30:00", "12:30:00", "Scheduled", "Medium", "Agenda to be prepared"],
+        ["2021-09-06", "Training", "Michael Brown", "michael@email.com", "10:00:00", "12:00:00", "Confirmed", "High", "Materials distributed"],
+        ['2021-09-03', 'Customer Support', 'Alice Johnson', "alice@email.com", '09:00:00', '10:00:00', 'Completed', 'Low', 'Follow-up needed'],
+        ["2021-09-04", "Development", "Bob Thompson", "bob@example.com", "13:00:00", "15:00:00", "In Progress", "High", "Debugging required"],
+        ["2021-09-05", "Meeting", "Sarah Lee", "sarah@example.com", "11:30:00", "12:30:00", "Scheduled", "Medium", "Agenda to be prepared"],
+        ["2021-09-06", "Training", "Michael Brown", "michael@email.com", "10:00:00", "12:00:00", "Confirmed", "High", "Materials distributed"],
+        ['2021-09-03', 'Customer Support', 'Alice Johnson', "alice@email.com", '09:00:00', '10:00:00', 'Completed', 'Low', 'Follow-up needed'],
+        ["2021-09-04", "Development", "Bob Thompson", "bob@example.com", "13:00:00", "15:00:00", "In Progress", "High", "Debugging required"],
+        ["2021-09-05", "Meeting", "Sarah Lee", "sarah@example.com", "11:30:00", "12:30:00", "Scheduled", "Medium", "Agenda to be prepared"],
+        ["2021-09-06", "Training", "Michael Brown", "michael@email.com", "10:00:00", "12:00:00", "Confirmed", "High", "Materials distributed"],
+        ['2021-09-03', 'Customer Support', 'Alice Johnson', "alice@email.com", '09:00:00', '10:00:00', 'Completed', 'Low', 'Follow-up needed'],
+        ["2021-09-04", "Development", "Bob Thompson", "bob@example.com", "13:00:00", "15:00:00", "In Progress", "High", "Debugging required"],
+        ["2021-09-05", "Meeting", "Sarah Lee", "sarah@example.com", "11:30:00", "12:30:00", "Scheduled", "Medium", "Agenda to be prepared"],
+        ["2021-09-06", "Training", "Michael Brown", "michael@email.com", "10:00:00", "12:00:00", "Confirmed", "High", "Materials distributed"],
+        ['2021-09-03', 'Customer Support', 'Alice Johnson', "alice@email.com", '09:00:00', '10:00:00', 'Completed', 'Low', 'Follow-up needed'],
+        ["2021-09-04", "Development", "Bob Thompson", "bob@example.com", "13:00:00", "15:00:00", "In Progress", "High", "Debugging required"],
+        ["2021-09-05", "Meeting", "Sarah Lee", "sarah@example.com", "11:30:00", "12:30:00", "Scheduled", "Medium", "Agenda to be prepared"],
+        ["2021-09-06", "Training", "Michael Brown", "michael@email.com", "10:00:00", "12:00:00", "Confirmed", "High", "Materials distributed"],
+
     ]
 
 
