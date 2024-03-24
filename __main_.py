@@ -8,17 +8,23 @@ from PIL import Image
 class Login_Page():
     
     def __init__(self):
+
         relative_path = 'images/'
         
         self.images_relative_path = relative_path
         
         self.app = CTk()
+        #self.app.overrideredirect(True)
+        
+        
         self.app.geometry("600x480")
         self.app.resizable(0,0)
         self.app.title("Login - TimeTracker")
         self.app.iconbitmap(relative_path + "application_icon.ico")
         
         
+        
+  
         side_img_data = Image.open(relative_path+"side-img-logo.png")
         email_icon_data = Image.open(relative_path+"email-icon.png")
         password_icon_data = Image.open(relative_path+"password-icon.png")
@@ -56,6 +62,9 @@ class Login_Page():
 
         
         self.app.mainloop()
+        
+
+        
 
     def manual_login(self):
         

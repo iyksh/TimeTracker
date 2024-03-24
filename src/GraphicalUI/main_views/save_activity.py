@@ -15,7 +15,7 @@ def save_activity_window(app):
     
     CTkLabel(master=title_frame, text="Save Activity Data", font=("Arial Black", 25), text_color="#601E88").pack(anchor="nw", side="left")
 
-    CTkButton(master=title_frame, text="+ Save",  font=("Arial Black", 15), text_color="#fff", fg_color="#601E88", hover_color="#E44982").pack(anchor="ne", side="right")
+    CTkButton(master=title_frame, text="+ Save",  font=("Arial Black", 15), text_color="#fff", fg_color="#601E88", hover_color="#E44982", command=save_data).pack(anchor="ne", side="right")
 
 
     text_how_to = """This is a intuitive application crafted to seamlessly monitor your digital routines across various devices.
@@ -51,8 +51,6 @@ def save_activity_window(app):
     CTkRadioButton(master=main_view, variable=status_var, value=1,text="I do not agree with the policy", font=("Arial Bold", 14), text_color="#601E88", fg_color="#601E88", border_color="#601E88", hover_color="#601E88").pack(anchor="nw", pady=(16,0), padx=27)
     CTkRadioButton(master=main_view, variable=status_var, value=2,text="I read and agree with the data policy", font=("Arial Bold", 14), text_color="#601E88", fg_color="#601E88", border_color="#601E88", hover_color="#601E88").pack(anchor="nw", pady=(16,0), padx=27)
     
-   
-
 def save_data():
     webbrowser.open("http://localhost:5600/api/0/export")
 

@@ -3,7 +3,7 @@ from CTkTable import CTkTable
 from PIL import Image
 
 from .user import User
-from .main_views.dashboard import home
+from .main_views.dashboard import dashboard
 from .main_views.create_task import create_task_window
 from .main_views.tasks_running import tasks_running_window
 from .main_views.admin_center import admin_center_window
@@ -22,7 +22,9 @@ class TimeTrackingGUI():
         self.images_relative_path = images_relative_path
         app = CTk()
         
-        app.geometry("1200x645")
+        app.geometry("1400x650")
+        app.title("Dashboard - TimeTracker")
+        app.iconbitmap(images_relative_path + "application_icon.ico")
         app.resizable(0,0)
 
         set_appearance_mode("light")
@@ -36,15 +38,15 @@ class TimeTrackingGUI():
         background_img = CTkImage(dark_image=background_img_data, light_image=background_img_data, size=(180, 700))
         CTkLabel(master=sidebar_frame, image=background_img, text='').place(x=0, y=0, relwidth=1, relheight=1)
 
-        logo_img_data = Image.open(images_relative_path + "logo2.png")
-        logo_img = CTkImage(dark_image=logo_img_data, light_image=logo_img_data, size=(75.00, 80.00))
-        CTkLabel(master=sidebar_frame, text="", image=logo_img).pack(pady=(30, 100), anchor="center")
+        logo_img_data = Image.open(images_relative_path + "logo.png")
+        logo_img = CTkImage(dark_image=logo_img_data, light_image=logo_img_data, size=(100.00, 100.00))
+        CTkLabel(master=sidebar_frame, text="", image=logo_img).pack(pady=(30, 50), anchor="center")
 
 
         self.create_button(sidebar_frame, "analytics_icon.png", "Dashboard", self.dashboard_event)
         self.create_button(sidebar_frame, "package_icon.png", "Create Task", self.create_task_event)
         self.create_button(sidebar_frame, "list_icon.png", "Tasks Running", self.tasks_running_event)
-        self.create_button(sidebar_frame, "login_light.png", "Save Activity", self.save_activity_event)
+        self.create_button(sidebar_frame, "login_light.png", "Save Activity", self.save_activity_event, pady=(100,0))
         
         if self.logged_user.admin:
             self.create_button(sidebar_frame, "returns_icon.png", "Admin Center", self.admin_center_event)
@@ -62,21 +64,21 @@ class TimeTrackingGUI():
         if hasattr(self, 'main_view'):
             self.main_view.destroy()
             
-        main_view = CTkFrame(master=master, fg_color="#fff",  width=1300, height=650, corner_radius=0)
+        main_view = CTkFrame(master=master, fg_color="#fff",  width=1400, height=650, corner_radius=0)
         main_view.pack_propagate(0)
         main_view.pack(side="left")
         
         return main_view
 
-    def create_button(self, master, image_path, text, command):
+    def create_button(self, master, image_path, text, command, pady= (15, 0)):
         button_img_data = Image.open(self.images_relative_path + image_path)
         button_img = CTkImage(dark_image=button_img_data, light_image=button_img_data)
-        CTkButton(master=master, image=button_img, text=text, fg_color="transparent", font=("Arial Bold", 14), hover_color="#8321b4", anchor="w", command=command).pack(anchor="w", ipady=5, pady=(15, 0))
+        CTkButton(master=master, image=button_img, text=text, fg_color="transparent", font=("Arial Bold", 14), hover_color="#8321b4", anchor="w", command=command).pack(anchor="w", ipady=5, pady=pady)
 
     def dashboard_event(self):
         self.main_view = self.create_main_view(self.app)
-        home(self.main_view)
-        
+        dashboard(self.main_view)
+
         pass
     
     def create_task_event(self):

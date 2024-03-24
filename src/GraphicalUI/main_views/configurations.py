@@ -14,6 +14,8 @@ def configurations_window(frame:CTkFrame, user_email:str):
     title_frame = CTkFrame(master=main_view, fg_color="transparent")
     title_frame.pack(anchor="n", fill="x",  padx=27, pady=(29, 0))
     
+    CTkLabel(master=title_frame, text="Settings", font=("Arial Black", 25), text_color="#601E88").pack(anchor="nw", side="left")
+    
     CTkButton(master=title_frame, text="+ Save Configurations",  font=("Arial Black", 15), text_color="#fff", fg_color="#601E88", hover_color="#E44982", command=lambda: apply_settings(language_combobox.get(), appearance_mode_combobox.get(), scaling_combobox.get(), font_combobox.get())).pack(anchor="ne", side="right")
     CTkLabel(master=main_view, text=f"Logged User: {user_email}", font=("Arial Bold", 17), text_color="#601E88").pack(anchor="nw", pady=(25,0), padx=27)
 

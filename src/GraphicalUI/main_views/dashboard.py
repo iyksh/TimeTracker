@@ -1,3 +1,5 @@
+import datetime
+import tkinter
 from customtkinter import *
 from CTkTable import CTkTable
 from PIL import Image
@@ -24,7 +26,7 @@ def update_clock(clock):
         time.sleep(1)
 
 
-def home(app):
+def dashboard(app):
 
     set_appearance_mode("light")
     images_relative_path = "images/"
@@ -36,8 +38,9 @@ def home(app):
 
     
     CTkLabel(master=title_frame, text="Dashboard", font=("Arial Black", 25), text_color="#601E88").pack(anchor="nw", side="left")
+    
 
-    CTkButton(master=title_frame, text="+ New Task",  font=("Arial Black", 15), text_color="#fff", fg_color="#601E88", hover_color="#E44982").pack(anchor="ne", side="right")
+    #CTkButton(master=title_frame, text="+ New Task",  font=("Arial Black", 15), text_color="#fff", fg_color="#601E88", hover_color="#E44982", command=new_task).pack(anchor="ne", side="right")
 
     metrics_frame = CTkFrame(master=main_view, fg_color="transparent")
     metrics_frame.pack(anchor="n", fill="x",  padx=27, pady=(36, 0))
@@ -50,7 +53,6 @@ def home(app):
     logistics_img = CTkImage(light_image=logitics_img_data, dark_image=logitics_img_data, size=(43, 43))
 
     CTkLabel(master=orders_metric, image=logistics_img, text="").grid(row=0, column=0, rowspan=2, padx=(12,5), pady=10)
-
     CTkLabel(master=orders_metric, text="Tasks Done", text_color="#fff", font=("Arial Black", 15)).grid(row=0, column=1, sticky="sw")
     CTkLabel(master=orders_metric, text="1", text_color="#fff",font=("Arial Black", 15), justify="left").grid(row=1, column=1, sticky="nw", pady=(0,10))
 
