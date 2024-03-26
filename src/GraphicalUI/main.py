@@ -24,7 +24,7 @@ class TimeTrackingGUI():
         
         app.geometry("1400x650")
         app.title("Dashboard - TimeTracker")
-        app.iconbitmap(images_relative_path + "application_icon.ico")
+        #app.iconbitmap(images_relative_path + "application_icon.ico")
         app.resizable(0,0)
 
         set_appearance_mode("light")

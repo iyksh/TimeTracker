@@ -1,0 +1,4 @@
+HOST_NAME = ""
+DATABASE_NAME = ""
+USER_NAME = ""
+USER_PASSWORD = ""

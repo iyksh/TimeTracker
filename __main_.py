@@ -5,6 +5,8 @@ from src.AWManager.AWsettings import check_aw_processes
 from customtkinter import *
 from PIL import Image
 
+import os
+
 class Login_Page():
     
     def __init__(self):
@@ -12,15 +14,17 @@ class Login_Page():
         relative_path = 'images/'
         
         self.images_relative_path = relative_path
-        
+        self.operating_system = os.name
         self.app = CTk()
-        #self.app.overrideredirect(True)
+        
+
         
         
         self.app.geometry("600x480")
         self.app.resizable(0,0)
         self.app.title("Login - TimeTracker")
-        self.app.iconbitmap(relative_path + "application_icon.ico")
+        if self.operating_system == 'nt':
+            self.app.iconbitmap(relative_path + "application_icon.ico")
         
         
         
@@ -78,10 +82,13 @@ class Login_Page():
         self.error_label.configure(text="Login successful!", text_color="#32CD32")
         print("Logged user: ", credentials_valid[1])
         
-        check_aw_processes()
+        if self.operating_system == 'nt':
+            check_aw_processes()
+            
         self.app.destroy()
+        TimeTrackingGUI(self.images_relative_path, credentials_valid[1])
         
-        app = TimeTrackingGUI(self.images_relative_path, credentials_valid[1])
+        
         
     def check_login_credentials(self):
         valid_credentials = {"user": "user", "root": "root", "info@ahbfinance.com": "admin"}
