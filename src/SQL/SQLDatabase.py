@@ -1,7 +1,7 @@
 from mysql.connector import Error
 
 import mysql.connector
-from src.CONFIG import HOST_NAME, DATABASE_NAME, USER_NAME, USER_PASSWORD
+from src.SQL.CONFIG import HOST_NAME, DATABASE_NAME, USER_NAME, USER_PASSWORD
 
 class SQLDatabase:
     
